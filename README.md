@@ -1,8 +1,38 @@
 # TicTacToeTest
 Try Tic-Tac-Toe
 
+### Project Structure Indicate
+ - src
 
-### Homework Description
+    - index.html // Html TicTacToe simple game.
+
+ - game-app // React project for TicTacToe simple game.
+
+    - src
+
+        - Fun.js // Get best position function
+
+        - Fun.test.js // Unit test for Fun.js
+
+
+### Run
+##### src
+```
+Direct open index.html
+```
+##### game-app
+
+```
+$ cd game-app
+$ npm i
+$ yarn start
+```
+###### Unit Test
+```
+$ npm test
+```
+
+### Function Description
 假设我们现在有一个 3 x 3 的井字棋游戏，我们用一个二维数组代表棋盘，’x’ 代表玩家 X 下的棋子，’o’ 代表玩家 O 下的棋子，’e’ 代表该格没有棋子。例如：
 一个空白的棋盘以下面的二维数组表示
 
@@ -49,35 +79,3 @@ someFunction(
 )
 
 // return [ [2, 2], [1, 2], [2, 0] ]
-
-
-### Project Structure Indicate
- - src
-
-    - index.html // html TicTacToe simple game.
-
- - game-app // react project for TicTacToe simple game.
-
-    - src
-
-        - Fun.js // Homework function
-
-        - Fun.test.js // unit test for Fun.js
-
-
-### Run
-##### src
-```
-Direct open index.html
-```
-##### game-app
-
-```
-$ cd game-app
-$ npm i
-$ yarn start
-```
-###### Unit Test
-```
-$ npm test
-```
