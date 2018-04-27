@@ -52,17 +52,18 @@ someFunction(
 
 
 ### Project Structure Indicate
--- src
-    - index.html // html TicTacToe simple game.
--- game-app // react project for TicTacToe simple game.
-    - src
-      - Fun.js // Homework function
-      - App.test.js // unit test for Fun.js
+.
++-- src
+|   +-- index.html // html TicTacToe simple game.
++-- game-app // react project for TicTacToe simple game.
+|   +-- src
+|   +-- +-- Fun.js // Homework function
+|   +-- +-- Fun.test.js // unit test for Fun.js
 
 ### Run
 ##### src
 ```
-direct open index.html
+Direct open index.html
 ```
 ##### game-app
 
