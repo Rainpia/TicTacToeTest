@@ -52,18 +52,17 @@ someFunction(
 
 
 ### Project Structure Indicate
-.
-+-- src
+ - src
 
-|   +-- index.html // html TicTacToe simple game.
+    - index.html // html TicTacToe simple game.
 
-+-- game-app // react project for TicTacToe simple game.
+ - game-app // react project for TicTacToe simple game.
 
-|   +-- src
+    - src
 
-|   +-- +-- Fun.js // Homework function
+        - Fun.js // Homework function
 
-|   +-- +-- Fun.test.js // unit test for Fun.js
+        - Fun.test.js // unit test for Fun.js
 
 
 ### Run
