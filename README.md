@@ -54,11 +54,17 @@ someFunction(
 ### Project Structure Indicate
 .
 +-- src
+
 |   +-- index.html // html TicTacToe simple game.
+
 +-- game-app // react project for TicTacToe simple game.
+
 |   +-- src
+
 |   +-- +-- Fun.js // Homework function
+
 |   +-- +-- Fun.test.js // unit test for Fun.js
+
 
 ### Run
 ##### src
@@ -68,11 +74,11 @@ Direct open index.html
 ##### game-app
 
 ```
-cd game-app
-npm i
-yarn start
+$ cd game-app
+$ npm i
+$ yarn start
 ```
 ###### Unit Test
 ```
-npm test
+$ npm test
 ```
