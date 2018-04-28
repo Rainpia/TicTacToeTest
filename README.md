@@ -1,6 +1,12 @@
 # TicTacToeTest
 Try Tic-Tac-Toe
 
+
+### 描述
+1, homework 代码在 game-app/src/Fun.js, 单元测试在 game-app/src/Fun.test.js;
+2, src下面是一个简单的HTML 井字棋人机游戏;
+
+
 ### Project Structure Indicate
  - src
 
