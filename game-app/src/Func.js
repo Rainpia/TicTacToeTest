@@ -1,5 +1,8 @@
 
 
+/**
+ * get best position
+ * **/
 const GetBestPosition = (type = ('x' || 'o'), array = []) => {
     let best = [];
     for (let x of [0,1,2]) {
@@ -15,6 +18,9 @@ const GetBestPosition = (type = ('x' || 'o'), array = []) => {
     return best;
 }
 
+/**
+ * judge current position if it is best
+ * **/
 const IsSuccess  = (x, y, array = [])=> {
     if (array[x][0] === array[x][1] && array[x][1] === array[x][2] && array[x][0] === array[x][2]) {
         return true;
