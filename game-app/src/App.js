@@ -10,19 +10,17 @@ let step = 0; // define step, total is 9.
  * init chess UI
  * **/
 export function initChessBoard() {
-    var root = document.getElementById("root");
-    let table = document.createElement("table");
+    let [root,table] = [document.getElementById('root'),document.createElement('table')];
     root.appendChild(table);
-    [[0, 0, 0], [0, 0, 0], [0, 0, 0]].forEach((x, xInd) => {
-        let tr = document.createElement("tr");
+    chessBoardMatrix.forEach((x, xInd) => {
+        let tr = document.createElement('tr');
         table.appendChild(tr)
         x.forEach((y, yInd) => {
-            let td = document.createElement("td");
-            td.setAttribute("id", xInd + " " + yInd)
-            td.setAttribute("x", xInd);
-            td.setAttribute("y", yInd);
-            td.addEventListener("click", handlePlayersDown);
-            let text = document.createTextNode(" ");
+            let [td,text] = [document.createElement('td'),document.createTextNode(' ')];
+            td.setAttribute('id', xInd + ' ' + yInd)
+            td.setAttribute('x', xInd);
+            td.setAttribute('y', yInd);
+            td.addEventListener('click', handlePlayersDown);
             td.appendChild(text);
             tr.appendChild(td);
         })
@@ -33,22 +31,19 @@ export function initChessBoard() {
  * handle player down event
  * **/
 function handlePlayersDown(e) {
-    let x = parseInt(e.target.getAttribute('x'));
-    let y = parseInt(e.target.getAttribute('y'));
-
+    let [x,y] = [parseInt(e.target.getAttribute('x')),parseInt(e.target.getAttribute('y'))];
     if (chessBoardMatrix[x][y] == 0) {
         chessBoardMatrix[x][y] = -1;
         step++;
         update(x, y);
-
         if (win(x, y)) {
-            addStatus("Players Win.");
+            addStatus('Players Win.');
             gameOver();
         } else if (isEnd()) {
-            addStatus("Draw.");
+            addStatus('Draw.');
             gameOver();
         } else {
-            addStatus("Computer thinking.");
+            addStatus('Computer thinking.');
             handleComputerDown();
         }
     }
@@ -59,30 +54,27 @@ function handlePlayersDown(e) {
  * handle player down event
  * **/
 function handleComputerDown() {
-    var b = best();
-    var x = b.x;
-    var y = b.y;
+    let b = best();
+    let [x,y] = [b.x,b.y];
     chessBoardMatrix[x][y] = 1;
     step++;
     update(x, y);
 
     if (win(x, y)) {
-        addStatus("Computer Win.");
+        addStatus('Computer Win.');
         gameOver();
     } else if (isEnd()) {
-        addStatus("Draw.");
+        addStatus('Draw.');
         gameOver();
     } else {
-        addStatus("Player thinking.");
+        addStatus('Player thinking.');
     }
 }
 
 function best() {
-    var bestx;
-    var besty;
-    var bestv = 0;
-    for (var x = 0; x < 3; x++) {
-        for (var y = 0; y < 3; y++) {
+    let [bestx,besty,bestv] = [null,null,0];
+    for (let x of [0,1,2]) {
+        for (let y of [0,1,2]) {
             if (chessBoardMatrix[x][y] == 0) {
                 chessBoardMatrix[x][y] = 1;
                 step++;
@@ -95,7 +87,7 @@ function best() {
                     chessBoardMatrix[x][y] = 0;
                     return {'x': x, 'y': y, 'v': 0};
                 } else {
-                    var v = worst().v;
+                    let v = worst().v;
                     step--;
                     chessBoardMatrix[x][y] = 0;
                     if (bestx == null || v >= bestv) {
@@ -111,11 +103,9 @@ function best() {
 }
 
 function worst() {
-    var bestx;
-    var besty;
-    var bestv = 0;
-    for (var x = 0; x < 3; x++) {
-        for (var y = 0; y < 3; y++) {
+    let [bestx,besty,bestv] = [null,null,0];
+    for (let x of [0,1,2]) {
+        for (let y of [0,1,2]) {
             if (chessBoardMatrix[x][y] == 0) {
                 chessBoardMatrix[x][y] = -1;
                 step++;
@@ -128,7 +118,7 @@ function worst() {
                     chessBoardMatrix[x][y] = 0;
                     return {'x': x, 'y': y, 'v': 0};
                 } else {
-                    var v = best().v;
+                    let v = best().v;
                     step--;
                     chessBoardMatrix[x][y] = 0;
                     if (bestx === null || v <= bestv) {
@@ -166,7 +156,7 @@ function isEnd() {
 }
 
 function update(x, y) {
-    var v = chessBoardMatrix[x][y];
+    let v = chessBoardMatrix[x][y];
     if (v > 0) {
         updateChessUI(x, y, 2);
     } else if (v < 0) {
@@ -180,12 +170,12 @@ function update(x, y) {
  * type === 2 : computer
  * **/
 function updateChessUI(x, y, type) {
-    let currentElement = document.getElementById(x + " " + y);
+    let currentElement = document.getElementById(x + ' ' + y);
     currentElement.removeEventListener('click',handlePlayersDown);
 
     if (type === 1) {
         if (currentElement.style.background !== 'red') {
-            let text = document.createTextNode("X");
+            const text = document.createTextNode('X');
             currentElement.appendChild(text);
             currentElement.style.background = 'red'
         }
@@ -193,7 +183,7 @@ function updateChessUI(x, y, type) {
 
     if (type === 2) {
         if (currentElement.style.background !== 'yellow') {
-            let text = document.createTextNode("O");
+            const text = document.createTextNode('O');
             currentElement.appendChild(text);
             currentElement.style.background = 'yellow'
         }
@@ -205,7 +195,7 @@ function updateChessUI(x, y, type) {
  * add remind message
  * **/
 function addStatus(text) {
-    let currentElement = document.getElementById("status");
+    let currentElement = document.getElementById('status');
     currentElement.innerHTML = text;
 }
 
@@ -213,5 +203,5 @@ function addStatus(text) {
  * game over
  * **/
 function gameOver() {
-    alert("Game Over");
+    alert('Game Over');
 }

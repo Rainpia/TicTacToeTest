@@ -1,9 +1,9 @@
 
 
-const GetBestPosition = (type, array) => {
+const GetBestPosition = (type = ('x' || 'o'), array = []) => {
     let best = [];
-    for (var x = 0; x < 3; x++) {
-        for (var y = 0; y < 3; y++) {
+    for (let x of [0,1,2]) {
+        for (let y of [0,1,2]) {
             if (array[x][y] === 'e') {
                 array[x][y] = type;
                 if (IsSuccess(x, y, array)) {
@@ -15,7 +15,7 @@ const GetBestPosition = (type, array) => {
     return best;
 }
 
-const IsSuccess  = (x, y, array)=> {
+const IsSuccess  = (x, y, array = [])=> {
     if (array[x][0] === array[x][1] && array[x][1] === array[x][2] && array[x][0] === array[x][2]) {
         return true;
     }
