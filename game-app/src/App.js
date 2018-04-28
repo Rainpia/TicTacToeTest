@@ -24,7 +24,8 @@ export function initChessBoard() {
             td.appendChild(text);
             tr.appendChild(td);
         })
-    })
+    });
+    addStatus('Please drop down first.');
 }
 
 /**
